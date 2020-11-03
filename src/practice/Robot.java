@@ -1,5 +1,7 @@
 package practice;
 
+import sample.CrashException;
+
 // クラス
 // クラス名  Robot
 class Robot {
@@ -7,6 +9,7 @@ class Robot {
     //インスタンスに状態を保持する変数のようなもの
     String name;
     String color;
+    int energy;
 
     // コンストラクタ(メソッドのようだけど、メソッドではない)
     // 戻り値の型がない
@@ -23,5 +26,14 @@ class Robot {
     String sayName() {
         // thisは省略している(名前が被っていないから)
         return name + "です。";
+    }
+    String charge(int energy) throws CrashException {
+        this.energy = this.energy + energy;
+
+        if (this.energy >= 10){
+            throw new CrashException("こわれました!");
+        }
+
+        return "充電しました：現在のエネルギーは" + this.energy;
     }
 }
